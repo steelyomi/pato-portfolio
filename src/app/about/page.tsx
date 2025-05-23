@@ -26,7 +26,7 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div>
               <Image
-                src="/pato.jpg"
+                src="/pato-new.png"
                 alt="TSOFT"
                 width={600}
                 height={800}

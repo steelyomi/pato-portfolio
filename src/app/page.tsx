@@ -146,7 +146,7 @@ export default function Home() {
               transition={{ duration: 0.6 }}
             >
               <Image
-                src="/pato.jpg"
+                src="/pato-new.png"
                 alt="TSOFT"
                 width={600}
                 height={800}
