@@ -69,10 +69,10 @@ export const projects = {
     {
       id: 3,
       title: "Wingman",
+      image: "/wingman.png",
+      youtubeId: "14t8Agwkr8Q",
       category: "Short Film",
       year: "2023",
-      youtubeId: "14t8Agwkr8Q",
-      image: "/wing-man.png",
     },
   ],
   commercials: [
@@ -90,6 +90,14 @@ export const projects = {
       category: "Commercial",
       year: "2024",
       youtubeId: "v_M6pKNzvVQ",
+      image: "/gulder.png",
+    },
+    {
+      id: 9,
+      title: "Wingman",
+      category: "Documentary",
+      year: "2022",
+      youtubeId: "1FqeHMcGIdQ",
       image: "/gulder.png",
     },
   ],
