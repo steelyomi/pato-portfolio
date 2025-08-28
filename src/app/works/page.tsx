@@ -11,19 +11,32 @@ import { projects } from "@/hooks";
 export default function WorksPage() {
   const featuredProject = projects.films.find((p) => p.id === 1); // Assuming Deadly Affairs is always the featured project
 
-  const handlePlayClick = (youtubeId: string, category: string) => {
+  const handlePlayClick = (
+    youtubeId: string,
+    driveUrl: string,
+    category: string
+  ) => {
     // if (!youtubeId) {
     //   console.warn("No YouTube ID provided for this video.");
     //   return; // Do nothing if youtubeId is empty
     // }
 
-    let youtubeUrl;
-    if (category === "Short Video") {
-      youtubeUrl = `https://www.youtube.com/shorts/${youtubeId}`;
-    } else {
-      youtubeUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
+    if (youtubeId) {
+      let youtubeUrl;
+      if (category === "Short Video") {
+        youtubeUrl = `https://www.youtube.com/shorts/${youtubeId}`;
+      } else {
+        youtubeUrl = `https://www.youtube.com/watch?v=${youtubeId}`;
+      }
+      window.open(youtubeUrl, "_blank");
+    } else if (driveUrl) {
+      // Convert Google Drive share link to direct embed/view link
+      const fileId = driveUrl.match(/\/d\/([^\/]+)/)?.[1];
+      if (fileId) {
+        const driveEmbedUrl = `https://drive.google.com/file/d/${fileId}/preview`;
+        window.open(driveEmbedUrl, "_blank");
+      }
     }
-    window.open(youtubeUrl, "_blank");
   };
 
   return (
@@ -34,8 +47,8 @@ export default function WorksPage() {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">My Work</h1>
             <p className="text-xl text-gray-300">
-              A collection of films, commercials, and music videos I&apos;ve had the
-              privilege to shoot.
+              A collection of films, commercials, and music videos I&apos;ve had
+              the privilege to shoot.
             </p>
           </div>
         </div>
@@ -124,7 +137,8 @@ export default function WorksPage() {
                     className="rounded-full bg-white/20 backdrop-blur-sm scale-150"
                     onClick={() =>
                       handlePlayClick(
-                        featuredProject.youtubeId,
+                        featuredProject.youtubeId || "",
+                        featuredProject.driveUrl || "",
                         featuredProject.category
                       )
                     }
@@ -161,10 +175,10 @@ export default function WorksPage() {
                   </span>
                 </div>
                 <p className="text-gray-300 max-w-2xl mx-auto">
-                  &quot;Deadly Affairs&quot; unravels a night of betrayal when a husband
-                  returns home to find not just infidelity — but death itself
-                  waiting in his bed. Now, love, loyalty, and life hang by a
-                  thread as he faces an impossible decision.
+                  &quot;Deadly Affairs&quot; unravels a night of betrayal when a
+                  husband returns home to find not just infidelity — but death
+                  itself waiting in his bed. Now, love, loyalty, and life hang
+                  by a thread as he faces an impossible decision.
                 </p>
               </div>
             )}
@@ -180,8 +194,8 @@ export default function WorksPage() {
               Interested in Working Together?
             </h2>
             <p className="text-gray-300 mb-8">
-              I&apos;m always looking for new and exciting projects to collaborate
-              on. Let&apos;s create something amazing together.
+              I&apos;m always looking for new and exciting projects to
+              collaborate on. Let&apos;s create something amazing together.
             </p>
             <Button asChild size="lg" className="rounded-full px-8">
               <Link href="/contact">Get In Touch</Link>
@@ -199,13 +213,18 @@ type Project = {
   category: string;
   year: string;
   image: string;
-  youtubeId: string;
+  youtubeId?: string;
+  driveUrl?: string;
 };
 
 interface ProjectCardProps {
   project: Project;
   index: number;
-  handlePlayClick: (youtubeId: string, category: string) => void;
+  handlePlayClick: (
+    youtubeId: string,
+    driveUrl: string,
+    category: string
+  ) => void;
 }
 
 function ProjectCard({ project, index, handlePlayClick }: ProjectCardProps) {
@@ -230,8 +249,14 @@ function ProjectCard({ project, index, handlePlayClick }: ProjectCardProps) {
           variant="outline"
           size="icon"
           className="rounded-full bg-white/20 backdrop-blur-sm"
-          onClick={() => handlePlayClick(project.youtubeId, project.category)}
-          disabled={!project.youtubeId}
+          onClick={() =>
+            handlePlayClick(
+              project.youtubeId || "",
+              project.driveUrl || "",
+              project.category
+            )
+          }
+          disabled={!project.youtubeId && !project.driveUrl}
         >
           <Play className="h-6 w-6 text-white" />
         </Button>
