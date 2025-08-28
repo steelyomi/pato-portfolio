@@ -14,7 +14,7 @@ export default function Home() {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="/tsmedia.jpg"
+            src="/logo-bg.png"
             alt="Cinematic background"
             fill
             className="object-cover brightness-50"

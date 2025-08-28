@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
@@ -39,8 +40,17 @@ export function Navigation() {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
-          <Link href="/" className="text-white font-bold text-xl z-50">
-            TSOFT MEDIA
+          <Link href="/" className="text-white">
+            {scrolled ? (
+              <span className="text-xl font-bold">TSOFT MEDIA</span>
+            ) : (
+              <Image
+                src="/TS-Media.png"
+                alt="logo"
+                width={120}
+                height={120}
+              />
+            )}
           </Link>
 
           {/* Desktop Navigation */}
