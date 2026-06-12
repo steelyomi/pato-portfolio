@@ -2,148 +2,117 @@
 
 import Link from "next/link";
 import { Instagram, Youtube, Mail, ArrowUp } from "lucide-react";
-import { Button } from "@/components/ui/button";
 
 export function Footer() {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
+  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   return (
-    <footer className="bg-black text-white border-t border-white/10">
-      <div className="container mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+    <footer className="bg-[#080808] text-white border-t border-[hsl(var(--gold)/0.15)]">
+      {/* Gold top accent line */}
+      <div className="h-px bg-gradient-to-r from-transparent via-[hsl(var(--gold)/0.5)] to-transparent" />
+
+      <div className="container mx-auto px-4 py-14">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10">
+          {/* Brand */}
           <div className="md:col-span-2">
-            <h3 className="text-xl font-bold mb-4">TSOFT MEDIA</h3>
-            <p className="text-gray-400 max-w-md">
-              Professional cinematographer based in Lagos, Nigeria, specializing
-              in narrative films, commercials, and short films.
+            <h3 className="font-display text-2xl tracking-widest text-white mb-3">TSOFT MEDIA</h3>
+            <div className="h-px w-12 bg-[hsl(var(--gold))] mb-4" />
+            <p className="text-gray-400 max-w-sm text-sm leading-relaxed font-sans">
+              Professional cinematographer based in Lagos, Nigeria, specializing in narrative films,
+              commercials, weddings, and short films. Available worldwide.
             </p>
-            <div className="flex space-x-4 mt-6">
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full hover:text-white hover:bg-white/10"
+            <div className="flex space-x-3 mt-6">
+              <a
+                href="https://www.instagram.com/tsoft_media/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center border border-[hsl(var(--gold)/0.25)] text-white/50 hover:text-[hsl(var(--gold))] hover:border-[hsl(var(--gold)/0.6)] transition-colors"
+                aria-label="Instagram"
               >
-                <Link
-                  href="https://www.instagram.com/tsoft_media/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Instagram className="h-5 w-5" />
-                  <span className="sr-only">Instagram</span>
-                </Link>
-              </Button>
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full hover:text-white hover:bg-white/10"
+                <Instagram className="h-4 w-4" />
+              </a>
+              <a
+                href="https://www.youtube.com/@tsoftmedia"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 flex items-center justify-center border border-[hsl(var(--gold)/0.25)] text-white/50 hover:text-[hsl(var(--gold))] hover:border-[hsl(var(--gold)/0.6)] transition-colors"
+                aria-label="YouTube"
               >
-                <Link
-                  href="https://www.youtube.com/@tsoftmedia"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <Youtube className="h-5 w-5" />
-                  <span className="sr-only">YouTube</span>
-                </Link>
-              </Button>
-              {/* <Button variant="ghost" size="icon" className="rounded-full hover:text-white hover:bg-white/10">
-                <Vimeo className="h-5 w-5" />
-                <span className="sr-only">Vimeo</span>
-              </Button> */}
-              <Button
-                variant="ghost"
-                size="icon"
-                className="rounded-full hover:text-white hover:bg-white/10"
+                <Youtube className="h-4 w-4" />
+              </a>
+              <a
+                href="mailto:salakotum@gmail.com"
+                className="w-9 h-9 flex items-center justify-center border border-[hsl(var(--gold)/0.25)] text-white/50 hover:text-[hsl(var(--gold))] hover:border-[hsl(var(--gold)/0.6)] transition-colors"
+                aria-label="Email"
               >
-                <Link href="mailto:salakotum@gmail.com">
-                  <Mail className="h-5 w-5" />
-                  <span className="sr-only">Email</span>
-                </Link>
-              </Button>
+                <Mail className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
+          {/* Navigation */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+            <h4 className="text-[10px] font-sans font-semibold uppercase tracking-widest text-[hsl(var(--gold))] mb-4">
               Navigation
             </h4>
-            <ul className="space-y-2">
-              <li>
-                <Link
-                  href="/"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/about"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/works"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Works
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="text-gray-400 hover:text-white transition-colors"
-                >
-                  Contact
-                </Link>
-              </li>
+            <ul className="space-y-2.5">
+              {[
+                { href: "/", label: "Home" },
+                { href: "/about", label: "About" },
+                { href: "/works", label: "Works" },
+                { href: "/weddings", label: "Weddings" },
+                { href: "/contact", label: "Contact" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sm text-gray-400 hover:text-[hsl(var(--gold))] transition-colors font-sans"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
+          {/* Contact */}
           <div>
-            <h4 className="text-sm font-semibold uppercase tracking-wider mb-4">
+            <h4 className="text-[10px] font-sans font-semibold uppercase tracking-widest text-[hsl(var(--gold))] mb-4">
               Contact
             </h4>
-            <address className="not-italic text-gray-400 space-y-2">
+            <address className="not-italic text-gray-400 space-y-2.5 text-sm font-sans">
               <p>Lagos, Nigeria</p>
               <p>
                 <a
-                  href="mailto:contact@jamesanderson.com"
-                  className="hover:text-white transition-colors"
+                  href="mailto:salakotum@gmail.com"
+                  className="hover:text-[hsl(var(--gold))] transition-colors"
                 >
                   salakotum@gmail.com
                 </a>
               </p>
               <p>
                 <a
-                  href="tel:+12345678900"
-                  className="hover:text-white transition-colors"
+                  href="tel:+2348162680019"
+                  className="hover:text-[hsl(var(--gold))] transition-colors"
                 >
-                  +1 (234) 8162680019
+                  +234 816 268 0019
                 </a>
               </p>
             </address>
           </div>
         </div>
 
-        <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} TSOFT MEDIA. All rights reserved.
+        <div className="border-t border-[hsl(var(--gold)/0.1)] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-gray-500 text-xs font-sans tracking-wide">
+            &copy; {new Date().getFullYear()} TSOFT MEDIA. All rights reserved.
           </p>
-          <Button
-            variant="ghost"
-            size="icon"
-            className="rounded-full mt-4 md:mt-0 hover:bg-white/10"
+          <button
             onClick={scrollToTop}
+            className="w-9 h-9 flex items-center justify-center border border-[hsl(var(--gold)/0.25)] text-white/40 hover:text-[hsl(var(--gold))] hover:border-[hsl(var(--gold)/0.6)] transition-colors"
+            aria-label="Back to top"
           >
-            <ArrowUp className="h-5 w-5" />
-            <span className="sr-only">Back to top</span>
-          </Button>
+            <ArrowUp className="h-4 w-4" />
+          </button>
         </div>
       </div>
     </footer>

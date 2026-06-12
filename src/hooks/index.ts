@@ -46,6 +46,80 @@ export const clients = [
     title: "Wolfpack",
     image: "/wolfpack.jpg",
   },
+  {
+    id: 5,
+    title: "F10",
+    image: "/f10-logo.jpeg",
+  },
+];
+
+export type Project = {
+  id: number;
+  title: string;
+  category: string;
+  year: string;
+  image: string;
+  youtubeId?: string;
+  driveUrl?: string;
+};
+
+export const weddings: Project[] = [
+  {
+    id: 20,
+    title: "Anjola & Tobi — Wedding Film",
+    category: "Wedding Film",
+    year: "2026",
+    driveUrl: "https://drive.google.com/file/d/1dQzy711JRm1oRm8D5NmKCEaflaLoTBkO/view?usp=drivesdk",
+    image: "/wedding-1.png",
+  },
+  {
+    id: 21,
+    title: "Cassandra & Kareem — Wedding Highlights",
+    category: "Wedding Film",
+    year: "2026",
+    driveUrl: "https://drive.google.com/file/d/12esPr3uZj0icJZ6aK_ZlJVR1NA0aixEB/view?usp=drivesdk",
+    image: "/wedding-2.png",
+  },
+  {
+    id: 22,
+    title: "Chinaza & Emeka — Wedding Highlights",
+    category: "Wedding Coverage",
+    year: "2026",
+    driveUrl: "https://drive.google.com/file/d/1u5GyanV_m2dFiRx-IU_1gYRs2rDrxkHH/view?usp=drivesdk",
+    image: "/wedding-3.png",
+  },
+  {
+    id: 23,
+    title: "Danielle & Uzo — Wedding Highlights",
+    category: "Wedding Coverage",
+    year: "2026",
+    driveUrl: "https://drive.google.com/file/d/1ewrQIQT6eIRM5oQirclG64Ah4EZaQY-m/view?usp=drivesdk",
+    image: "/wedding-4.png",
+  },
+  {
+    id: 24,
+    title: "Lizzy & Omoefe — Wedding Film",
+    category: "Wedding Film",
+    year: "2026",
+    driveUrl: "https://drive.google.com/file/d/1dS6_NSer4kilwBFHK1DJl7wSbtQiLzI_/view?usp=drivesdk",
+    image: "/wedding-5.png",
+  },
+  {
+    id: 25,
+    title: "Orobosa & Ugoch — Legal Wedding Highlights",
+    category: "Wedding Coverage",
+    year: "2026",
+    driveUrl: "https://drive.google.com/file/d/1LuO2hk_qdDcD7b_hwPi6TsmfHkcDc3fd/view?usp=drivesdk",
+    image: "/wedding-6.png",
+  },
+  {
+    id: 26,
+    title: "Yetunde & Ajibola — Wedding Film",
+    category: "Wedding Film",
+    year: "2026",
+    driveUrl: "https://drive.google.com/file/d/14N82qhXcf-qqWWrFzARBhvb02ae40p7A/view?usp=drivesdk",
+    image: "/wedding-7.png",
+  },
 ];
 
 export const projects = {
